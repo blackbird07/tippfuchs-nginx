@@ -19,4 +19,6 @@ default['nginx']['keepalive_timeout']    = 65
 
 default['nginx']['gzip']                 = 'on'
 
+default['nginx']['server_tokens']        = 'off'  # hide the Nginx server version
+
 
