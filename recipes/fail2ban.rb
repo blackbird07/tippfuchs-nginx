@@ -1,3 +1,16 @@
+fail2ban_jail 'nginx-auth' do
+  jail   :enabled     => 'true',
+         :action      => 'iptables-multiport[name=NoAuthFailures, port="http,https"]',
+         :logpath     => '/var/log/nginx*/*error*.log',
+         :maxretry    => '6',
+         :bantime     => '600'       # 10 minutes
+  
+  filter :failregex   => ['no user/password was provided for basic authentication.*client: <HOST>',
+                          'user .* was not found in.*client: <HOST>',
+                          'user .* password mismatch.*client: <HOST>'],
+         :ignoreregex => ''
+end
+
 fail2ban_jail 'nginx-noscript' do
   jail   :enabled     => 'true',
          :port        => 'http,https',
