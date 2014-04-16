@@ -11,14 +11,10 @@ default['nginx']['worker_processes']     = node['cpu'] && node['cpu']['total'] ?
 default['nginx']['worker_connections']   = 1024
 
 default['nginx']['disable_access_log']   = false
-default['nginx']['server_tokens']        = 'off'
+default['nginx']['server_tokens']        = 'off' # hide the nginx server version
 default['nginx']['sendfile']             = 'on'
 
 default['nginx']['keepalive']            = 'on'
 default['nginx']['keepalive_timeout']    = 65
 
 default['nginx']['gzip']                 = 'on'
-
-default['nginx']['server_tokens']        = 'off'  # hide the Nginx server version
-
-
